@@ -1,0 +1,5 @@
+# https://www.netlify.com/docs/netlify-toml-reference/
+
+[build]
+  publish = "public"
+  command = "bash -x ./netlify/deploy.sh"
