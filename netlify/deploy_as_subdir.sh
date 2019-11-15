@@ -17,10 +17,10 @@ tar xvzf "${ARTIFACT_ID}".tgz
 find "${ARTIFACT_ID}" -name 'index.html' -exec perl -pi -e 's/<a( [^\/>]*)href="\//<a$1href="\/blog\//gsi' {} \;
 find "${ARTIFACT_ID}" -name 'index.html' -exec perl -pi -e "s/<a( [^\/>]*)href='\//<a $1href='\/blog\//gsi" {} \;
 
-find "${ARTIFACT_ID}" -name 'index.html' -exec perl -pi -e "s/'\/wp-content/\'/blog\/wp-content/gsi" {} \;
-find "${ARTIFACT_ID}" -name 'index.html' -exec perl -pi -e "s/'\/wp-includes/'\/blog\/wp-includes/gsi" {} \;
+find "${ARTIFACT_ID}" -name 'index.html' -exec perl -pi -e "s@'/wp-content@/blog/wp-content@gsi" {} \;
+find "${ARTIFACT_ID}" -name 'index.html' -exec perl -pi -e "s@'/wp-includes@'/blog/wp-includes@gsi" {} \;
 
-find "${ARTIFACT_ID}" -name 'index.html' -exec perl -pi -e 's/"\/wp-content/\"/blog\/wp-content/gsi' {} \;
-find "${ARTIFACT_ID}" -name 'index.html' -exec perl -pi -e 's/"\/wp-includes/"\/blog\/wp-includes/gsi' {} \;
+find "${ARTIFACT_ID}" -name 'index.html' -exec perl -pi -e 's@"/wp-content@"/blog/wp-content@gsi' {} \;
+find "${ARTIFACT_ID}" -name 'index.html' -exec perl -pi -e 's@"/wp-includes@"/blog/wp-includes@gsi' {} \;
 
 mv "${ARTIFACT_ID}" public
