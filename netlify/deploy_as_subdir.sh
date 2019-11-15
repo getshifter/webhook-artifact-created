@@ -14,8 +14,8 @@ wget -O "${ARTIFACT_ID}.tgz" "${DOWNLOAD_URL}"
 tar xvzf "${ARTIFACT_ID}".tgz
 
 # Rewrite `/`` to `/blog/``
-find "${ARTIFACT_ID}" -name 'index.html' -exec perl -pi -e 's/<a( [^\/>]*)href="\//<a$1href="\/blog\//gsi' {} \;
-find "${ARTIFACT_ID}" -name 'index.html' -exec perl -pi -e "s/<a( [^\/>]*)href='\//<a $1href='\/blog\//gsi" {} \;
+find "${ARTIFACT_ID}" -name 'index.html' -exec perl -pi -e 's@<a( [^\/>]*)href="/@<a$1href="/blog/@gsi' {} \;
+find "${ARTIFACT_ID}" -name 'index.html' -exec perl -pi -e "s@<a( [^\/>]*)href='/@<a $1href='/blog/@gsi" {} \;
 
 find "${ARTIFACT_ID}" -name 'index.html' -exec perl -pi -e "s@'/wp-content@/blog/wp-content@gsi" {} \;
 find "${ARTIFACT_ID}" -name 'index.html' -exec perl -pi -e "s@'/wp-includes@'/blog/wp-includes@gsi" {} \;
