@@ -3,3 +3,4 @@
 [build]
   publish = "public"
   command = "bash -x ./netlify/deploy.sh"
+  # command = "bash -x ./netlify/deploy_as_subdir.sh"
