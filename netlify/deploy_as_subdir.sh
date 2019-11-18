@@ -34,6 +34,8 @@ find "${ARTIFACT_ID}" -name 'index.html' -exec perl -pi -e 's@\s/wp-includes@ /$
 # update amphtml
 find "${ARTIFACT_ID}" -name 'index.html' -exec perl -pi -e 's@<link\srel="amphtml"\shref="https://$ENV{BASE_NAME}/@<link rel="amphtml" href="https://$ENV{NEW_NAME}/$ENV{SUBDIR}/@gsi' {} \;
 find "${ARTIFACT_ID}" -name 'index.html' -exec perl -pi -e "s@<link\srel='amphtml'\shref='https://\$ENV{BASE_NAME}/@<link rel='amphtml' href='https://\$ENV{NEW_NAME}/\$ENV{SUBDIR}/@gsi" {} \;
+find "${ARTIFACT_ID}/*/amp/" -name 'index.html' -exec perl -pi -e 's@<link\srel="canonical"\shref="https://$ENV{BASE_NAME}/@<link rel="canonical" href="https://$ENV{NEW_NAME}/$ENV{SUBDIR}/@gsi' {} \;
+find "${ARTIFACT_ID}/*/amp/" -name 'index.html' -exec perl -pi -e "s@<link\srel='canonical'\shref='https://\$ENV{BASE_NAME}/@<link rel='canonical' href='https://\$ENV{NEW_NAME}/\$ENV{SUBDIR}/@gsi" {} \;
 
 # update meta
 find "${ARTIFACT_ID}" -name 'index.html' -exec perl -pi -e "s@<meta( [^\/>]*)content='https://\$ENV{BASE_NAME}/@<meta $1content='https://\$ENV{NEW_NAME}/\$ENV{SUBDIR}/@gsi" {} \;
