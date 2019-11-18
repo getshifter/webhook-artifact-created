@@ -1,5 +1,6 @@
 #!/bin/bash -x
 
+set -e
 
 env
 
@@ -10,7 +11,7 @@ fi
 DOWNLOAD_URL=$(echo "${INCOMING_HOOK_BODY}" | jq -r .download_url | base64 -d)
 ARTIFACT_ID=$(echo "${INCOMING_HOOK_BODY}" | jq -r .artifact_id)
 
-wget -O "${ARTIFACT_ID}.tgz" "${DOWNLOAD_URL}"
+wget -nv -O "${ARTIFACT_ID}.tgz" "${DOWNLOAD_URL}"
 tar xvzf "${ARTIFACT_ID}".tgz
 
 export SUBDIR=${SUBDIR:-blog}
