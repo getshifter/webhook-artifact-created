@@ -16,7 +16,7 @@ tar xvzf "${ARTIFACT_ID}".tgz
 
 export SUBDIR=${SUBDIR:-blog}
 export BASE_NAME=${BASE_NAME:-example.on.getshifter.io}
-export NEW_NAME=${BASE_NAME:-example.com}
+export NEW_NAME=${NEW_NAME:-example.com}
 
 # Rewrite `/`` to `/blog/``
 find "${ARTIFACT_ID}" -name 'index.html' -exec perl -pi -e 's@<a( [^\/>]*)href="/@<a$1href="/$ENV{SUBDIR}/@gsi' {} \;
